@@ -8,11 +8,11 @@ If you need to include an IBM Cloud VPC Subnet in your deployment you can use th
 ### Subnet **without** a public gateway attached and a specific CIDR
 
 ```
-data "ibm_resource_group" "group" {
+data ibm_resource_group group {
   name = var.resource_group
 }
 
-data "ibm_is_zones" "mzr" {
+data ibm_is_zones mzr {
   region = var.region
 }
 
@@ -21,24 +21,24 @@ variable ipv4_cidr_block {
 }
 
 module subnet {
-  source         = "git::https://github.com/cloud-design-dev/IBM-Cloud-VPC-Subnet-Module.git"
-  name           = var.name
-  resource_group = data.ibm_resource_group.group.id
-  network_acl    = var.network_acl
+  source          = "git::https://github.com/cloud-design-dev/IBM-Cloud-VPC-Subnet-Module.git"
+  name            = var.name
+  resource_group  = data.ibm_resource_group.group.id
+  network_acl     = var.network_acl
   ipv4_cidr_block = var.ipv4_cidr_block
-  vpc_id         = var.vpc_id
-  zone           = data.ibm_is_zones.mzr.zones[0]
+  vpc_id          = var.vpc_id
+  zone            = data.ibm_is_zones.mzr.zones[0]
 }
 ```
 
 ### Subnet **with** a Public Gateway and custom ACL attached
 
 ```
-data "ibm_resource_group" "group" {
+data ibm_resource_group group {
   name = var.resource_group
 }
 
-data "ibm_is_zones" "mzr" {
+data ibm_is_zones mzr {
   region = var.region
 }
 
