@@ -47,7 +47,7 @@ module subnet {
   zone           = data.ibm_is_zones.mzr.zones[0]
   public_gateway = var.public_gateway
 }
-
+```
 
 ## Inputs
 
