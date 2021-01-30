@@ -57,11 +57,12 @@ module subnet {
 | name | ID of the resource group to associate with the virtual server instance | `string` | n/a | yes |
 | vpc | ID of the VPC where the subnet will be created | `string` | n/a | yes |
 | zone | VPC zone where the subnet will be created. | `string` | n/a | yes |
-| resource\_group | The Resource Group to attach to the subnet | `string` | `""` | yes | 
+| resource\_group | The Resource Group to attach to the subnet | `string` | `Default` | yes | 
 | ipv4_cidr_block | The CIDR for the subnet being created. | `string` | n/a | optional |
 | address\_count | Number of IPs to assign to subnet | `string` | n/a | optional |
-| network\_acl | Network ACL to attach to subnet | `string` | `""` | optional |
+| network\_acl | Network ACL to attach to subnet | `string` | `VPC Default` | optional |
 | public\_gateway | Public Gateway to attach to the subnet | `string` | `""` | optional | 
+| routing\_table | Routing Table to attach to the subnet | `string` | `VPC Default` | optional | 
 
 
 ## Outputs
