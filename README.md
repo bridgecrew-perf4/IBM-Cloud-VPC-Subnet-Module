@@ -4,7 +4,8 @@ Terraform module for creating a VPC Subnet in IBM Cloud. You can either specify 
 ## Usage
 If you need to include an IBM Cloud VPC Subnet in your deployment you can use the following code:
 
-### Subnet **without** a public gateway attached
+## Examples
+### Subnet **without** a public gateway attached and a specific CIDR
 
 ```
 data "ibm_resource_group" "group" {
@@ -13,6 +14,10 @@ data "ibm_resource_group" "group" {
 
 data "ibm_is_zones" "mzr" {
   region = var.region
+}
+
+variable ipv4_cidr_block {
+  default = "10.240.0.0/26"
 }
 
 module subnet {
@@ -20,13 +25,13 @@ module subnet {
   name           = var.name
   resource_group = data.ibm_resource_group.group.id
   network_acl    = var.network_acl
-  address_count  = var.address_count
+  ipv4_cidr_block = var.ipv4_cidr_block
   vpc_id         = var.vpc_id
   zone           = data.ibm_is_zones.mzr.zones[0]
 }
 ```
 
-### Subnet **with** a public gateway attached
+### Subnet **with** a Public Gateway and custom ACL attached
 
 ```
 data "ibm_resource_group" "group" {
@@ -35,6 +40,18 @@ data "ibm_resource_group" "group" {
 
 data "ibm_is_zones" "mzr" {
   region = var.region
+}
+
+variable address_count {
+  default = "128"
+}
+
+variable network_acl {
+  default = "network-acl-unique-identifier"
+}
+
+variable public_gateway {
+  default = "public-gateway-unique-identifier"
 }
 
 module subnet {
@@ -58,7 +75,7 @@ module subnet {
 | zone | VPC zone where the subnet will be created. | `string` | n/a | yes |
 | resource\_group | The Resource Group to attach to the subnet | `string` | `""` | yes | 
 | ipv4_cidr_block | The CIDR for the subnet being created. | `string` | n/a | optional |
-| address_count | Number of IPs to assign to subnet | `string` | n/a | optional |
+| address\_count | Number of IPs to assign to subnet | `string` | n/a | optional |
 | network\_acl | Network ACL to attach to subnet | `string` | `""` | optional |
 | public\_gateway | Public Gateway to attach to the subnet | `string` | `""` | optional | 
 
