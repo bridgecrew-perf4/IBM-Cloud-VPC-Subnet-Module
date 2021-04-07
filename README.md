@@ -18,7 +18,7 @@ module subnet {
   resource_group  = var.resource_group
   network_acl     = var.network_acl
   ipv4_cidr_block = var.ipv4_cidr_block
-  vpc_id          = var.vpc_id
+  vpc             = var.vpc_id
   zone            = var.zone
 }
 ```
@@ -44,7 +44,7 @@ module subnet {
   resource_group = var.resource_group
   network_acl    = var.network_acl
   address_count  = var.address_count
-  vpc_id         = var.vpc_id
+  vpc            = var.vpc_id
   zone           = var.zone
   public_gateway = var.public_gateway
 }
