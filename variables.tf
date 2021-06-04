@@ -57,3 +57,9 @@ variable routing_table {
   description = "Routing Table ID to assign to the Subnet. If none is supplied the default VPC routes are applied to the subnet."
   default     = ""
 }
+
+variable tags {
+  type = list(string)
+  description = "Tags to assign to resources."
+  default     = []
+}
