@@ -8,6 +8,7 @@ resource ibm_is_subnet subnet {
   public_gateway           = local.public_gateway
   resource_group           = var.resource_group
   routing_table            = var.routing_table
+  tags                     = concat(var.tags) 
 }
 
 locals {
