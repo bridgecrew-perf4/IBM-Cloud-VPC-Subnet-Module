@@ -9,3 +9,8 @@ output available_ipv4_address_count {
 output ipv4_cidr_block {
   value = ibm_is_subnet.subnet.ipv4_cidr_block
 }
+
+output "subnet" {
+  description = "Return all subnet attributes"
+  value = ibm_is_subnet.subnet
+}
