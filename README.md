@@ -54,7 +54,7 @@ module subnet {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| name | ID of the resource group to associate with the virtual server instance | `string` | n/a | yes |
+| name | Name for subnet | `string` | n/a | yes |
 | vpc | ID of the VPC where the subnet will be created | `string` | n/a | yes |
 | zone | VPC zone where the subnet will be created. | `string` | n/a | yes |
 | resource\_group | The Resource Group to attach to the subnet | `string` | `Default` | yes | 
